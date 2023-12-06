@@ -7,8 +7,9 @@
 
 using namespace std;
 
-bool helper(string line) {
-  
+int helper(string line) {
+    int power = 0;
+    int redCubes = INT_MIN, greenCubes = INT_MIN, blueCubes = INT_MIN;
     string remaining;
 
     unordered_map<string, int> bag;
@@ -41,29 +42,31 @@ bool helper(string line) {
             string color, num;
             ss >> num >> color;
             int n = stoi(num);
-            // Part 1
-            if (n > bag[color]) {
-                return false;
+
+            // Part 2
+            if (color == "red") {
+                redCubes = max(redCubes, n);
+            } else if (color == "green") {
+                greenCubes = max(greenCubes, n);
+            } else {
+                blueCubes = max(blueCubes, n);
             }
         }
+        power = redCubes * greenCubes * blueCubes;
     }
+    return power;
 
-    return true;
 }
 int main() {
 
     ifstream inputFile("D:/Git Hub Repos/Advent of Code/2023/Day 2 Cube Conundrum/input.txt");
-    int sum = 0, game_no = 1;
+    int sum = 0;
     string line;
 
     while (getline(inputFile, line)) {
 
-        bool check = helper(line);
-
-        if (check) {
-            sum  += game_no;
-        }
-        game_no++;
+        int ans = helper(line);
+        sum  += ans;
     }
     
     cout << sum;
