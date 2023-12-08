@@ -12,12 +12,12 @@ int main() {
 // light-to-temperature map:
 
 
-// 68 64 13
+// 496269031 1203272644 52136246
     int start = 0;
     vector<int> g = {74, 42, 46, 34}; // w-l
-    int source = 64;
-    int destination = 68;
-    int range = 13;
+    int source = 1203272644;
+    int destination = 496269031;
+    int range = 52136246;
 unordered_map<int , int> map;
     for (int i = 1; i <= range; i++) {
         map[source] = destination;
@@ -26,15 +26,15 @@ unordered_map<int , int> map;
     }
 
 
-  for (int i = 0; i < g.size(); i++) {
-    if (map.find(g[i]) != map.end()) {
-        // cout << g[i]<<endl;
-        int val = map[g[i]];
-        g[i] = val;
-        // cout << g[i] << " <><><><><> " << val << endl;
-        // start++;
-    }
-  }
+  // for (int i = 0; i < g.size(); i++) {
+  //   if (map.find(g[i]) != map.end()) {
+  //       // cout << g[i]<<endl;
+  //       int val = map[g[i]];
+  //       g[i] = val;
+  //       // cout << g[i] << " <><><><><> " << val << endl;
+  //       // start++;
+  //   }
+  // }
 
 
 

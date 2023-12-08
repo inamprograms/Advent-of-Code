@@ -8,10 +8,10 @@
 
 using namespace std;
 
-unordered_map<long long, vector<vector<string>>> map;
-unordered_map<int, long long> source_to_destination;
-// unordered_map<int, int> outputMap;
+unordered_map<int, vector<vector<string>>> map;
+unordered_map<long long, long long> source_to_destination;
 vector<long long> output, visited;
+int n, key;
 
 
 int checkNewMap (string line) {
@@ -41,9 +41,9 @@ void parse(string line) {
 
     vector<string> data;
     string remaining;
-    long long n, key;
 
     n = checkNewMap(line);
+    
     if (n != -1) {
         key = n;
     }
@@ -79,10 +79,9 @@ vector<vector<string>> getData(int key) {
 }
 void createMap(vector<string>& vec, bool check) {
    long long destination, source, range;
-    if (check != 0) {
-        // for (auto t: vec) {
-        //     cout  << t << " ";
-        // }
+
+     if (check != 0) {
+
         long long arr[3];
         for (size_t i = 0; i < vec.size(); ++i) {
             arr[i] = stoll(vec[i]);
@@ -111,12 +110,14 @@ void lookUpInMap() {
 
         bool found = binary_search(visited.begin(), visited.end(), s);
         if (!found) {
-
             if (source_to_destination.find(output[s]) != source_to_destination.end()) {
+               
                 long long value = source_to_destination[output[s]];
                 output[s] = value;
                 visited.push_back(s);
-            } 
+            }
+            //  529476798 890019635 624017612
+            //  1236480411 837883389  571881366 
         }
         
         // cout << source.first << " --------> " << source.second << endl;
@@ -124,12 +125,12 @@ void lookUpInMap() {
 }
 void getLowestLocationNumber(int i) {
     vector<vector<string>> given;
-
     if (i == 0) {
-        given = getData(0);
+        given = getData(i);
         createMap(given[0], 0); 
 
     } else {
+      
         given = getData(i);
         
         for (auto v: given) {
@@ -154,6 +155,7 @@ int main() {
         if (line != "\0")
         {
             parse(line);
+            
         } 
     }
     for (int i = 0; i <= 7; i++) {
@@ -162,7 +164,7 @@ int main() {
     }
     
     auto lowest_loc_num = min_element(output.begin(), output.end());
-    cout << *lowest_loc_num << endl;
+    cout << *lowest_loc_num <<  endl;
 
     //   for (const auto& entry : map) {
     //     std::cout << "Key: " << entry.first << std::endl;
@@ -177,7 +179,7 @@ int main() {
     // }
 
     // for (auto p: output) {
-    // cout << p<< " "  << endl;
+    // cout << p<< " ";
     //     }
 
     return 0;
