@@ -54,6 +54,20 @@ void parse(string line) {
             line = line.substr(colonPos+1);
         }
     } 
+    // Getting input line by line to parse
+    // Storing each gvien map into a hashmap with key 0 - 7 
+    //     key represents map like seed-soil and value as two D vector of all passible ranges of map
+    // looping through 0-7 to get data from map to process:  getLowestLocationNumber(int i)
+            // getData(i) to get data from map for i(key)
+            // store data in tow D vector
+            // if i is 0 then it means seeds otherwise any map 
+            // createMap(vector<string>& vec, bool check) -> check is 0 or 1
+            // This maps the each input 1-7 maps to given source to destination one by one 
+            // Lookup into source_to_destination map for every output 
+            //     if found in map then update the output ohert wise keep same
+            
+
+
 
     istringstream ss(line);
     string value;
